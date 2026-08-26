@@ -1,0 +1,6 @@
+dist
+coverage
+plugin/dist
+plugin/toss-place-mcp-plugin.zip
+package-lock.json
+.toss-pos-test

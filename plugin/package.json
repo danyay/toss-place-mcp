@@ -1,0 +1,22 @@
+{
+  "name": "place-mcp-bridge",
+  "version": "0.1.5",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "webpack --config webpack.config.mjs",
+    "typecheck": "tsc --noEmit",
+    "zip": "npm run build && rm -f place-mcp-bridge.zip && zip -qr place-mcp-bridge.zip dist -x '*.DS_Store' && unzip -Z1 place-mcp-bridge.zip | grep -qx 'dist/main.js'"
+  },
+  "dependencies": {
+    "@tossplace/pos-plugin-sdk": "0.0.27"
+  },
+  "devDependencies": {
+    "process": "^0.11.10",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
+  }
+}

@@ -1,0 +1,30 @@
+services:
+  bridge:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      TOSS_MCP_HOST: 0.0.0.0
+      TOSS_MCP_PORT: 8787
+      TOSS_MCP_DATABASE_URL: sqlite:/data/toss-place.sqlite
+    ports:
+      - '127.0.0.1:${TOSS_MCP_PORT:-8787}:8787'
+    volumes:
+      - toss_mcp_data:/data
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:8787/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  toss_mcp_data:

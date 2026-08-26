@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+data/
+plugin/dist/
+plugin/*.zip
+.DS_Store
+*.log
+.toss-pos-test/

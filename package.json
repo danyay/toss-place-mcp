@@ -1,0 +1,76 @@
+{
+  "name": "toss-place-mcp",
+  "version": "0.1.0",
+  "description": "Open-source MCP server and self-hosted bridge for Toss Place POS analytics",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danyay/toss-place-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danyay/toss-place-mcp/issues"
+  },
+  "homepage": "https://github.com/danyay/toss-place-mcp#readme",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "plugin"
+  ],
+  "bin": {
+    "toss-place-mcp": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "init": "tsx src/cli.ts init",
+    "build": "tsc -p tsconfig.build.json",
+    "build:plugin": "npm run build --workspace plugin",
+    "build:all": "npm run build && npm run build:plugin",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test",
+    "dev": "tsx watch src/cli.ts bridge",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "mcp": "tsx src/cli.ts mcp",
+    "bridge": "tsx src/cli.ts bridge",
+    "pair": "tsx src/cli.ts pairing-code",
+    "doctor": "tsx src/cli.ts doctor",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit && npm run typecheck --workspace plugin"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.3.0",
+    "@fastify/rate-limit": "^11.2.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.12.1",
+    "pg": "^8.23.0",
+    "zod": "^4.4.3"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^13.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.10.1",
+    "@types/pg": "^8.16.0",
+    "eslint": "^9.39.2",
+    "prettier": "^3.8.2",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1",
+    "vitest": "^4.1.11"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.0.3": true,
+    "esbuild@0.28.2": true
+  }
+}
