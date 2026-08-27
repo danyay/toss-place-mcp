@@ -133,6 +133,7 @@ export class Store {
       } catch (error) {
         throw new Error(
           `SQLite support could not load. Reinstall better-sqlite3 with native build support or use PostgreSQL. ${error instanceof Error ? error.message : String(error)}`,
+          { cause: error },
         )
       }
     }
