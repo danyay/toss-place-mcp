@@ -10,7 +10,7 @@
     "zip": "npm run build && rm -f place-mcp-bridge.zip && zip -qr place-mcp-bridge.zip dist -x '*.DS_Store' && unzip -Z1 place-mcp-bridge.zip | grep -qx 'dist/main.js'"
   },
   "dependencies": {
-    "@tossplace/pos-plugin-sdk": "0.0.27"
+    "@tossplace/pos-plugin-sdk": "0.0.28"
   },
   "devDependencies": {
     "process": "^0.11.10",
